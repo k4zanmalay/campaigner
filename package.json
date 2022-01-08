@@ -1,0 +1,26 @@
+{
+  "name": "campaign",
+  "version": "1.0.0",
+  "description": "",
+  "main": "campaign.js",
+  "dependencies": {
+    "fs-extra": "^0.30.0",
+    "ganache-cli": "^6.12.2",
+    "mocha": "^9.1.3",
+    "next": "^12.0.4",
+    "next-routes-extended": "^1.7.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.4",
+    "solc": "^0.8.10",
+    "web3": "^1.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha",
+    "dev": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
