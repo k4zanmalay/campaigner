@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Layout from '../../../components/layout';
 import { Form, Button, Input, Message } from 'semantic-ui-react';
 import campaigns from '../../../ethereum/campaign';
-import web3 from '../../../ethereum/web3';
+import {web3, isConnected} from '../../../ethereum/web3';
 import { Link, Router } from '../../../routes';
 
 class RequestNew extends Component {
@@ -24,6 +24,7 @@ class RequestNew extends Component {
     const campaign = campaigns(this.props.address);
     const {description, value, recipient} = this.state;
     try {
+      await isConnected();
       const accounts = await web3.eth.getAccounts();
       await campaign.methods.createRequest(
         description,

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from '../../routes';
-import web3 from '../../ethereum/web3';
+import {web3} from '../../ethereum/web3';
 import { Card, Grid, Button} from 'semantic-ui-react';
 import Layout from '../../components/layout';
 import ContributeForm from '../../components/contributeForm';

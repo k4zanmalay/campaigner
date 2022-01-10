@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Form, Button, Input, Message } from 'semantic-ui-react';
 import campaigns from '../ethereum/campaign';
-import web3 from '../ethereum/web3';
+import {web3, isConnected} from '../ethereum/web3';
 import { Router } from '../routes';
 
 class ContributeForm extends Component {
@@ -17,6 +17,7 @@ class ContributeForm extends Component {
     this.setState({loading: true, errorMessage: ''});
     const campaign = campaigns(this.props.address);
     try {
+      await isConnected();
       const accounts = await web3.eth.getAccounts();
       await campaign.methods.contribute().send({
         from: accounts[0],

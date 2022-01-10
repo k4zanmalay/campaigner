@@ -12,5 +12,13 @@ else {
   );
   web3 = new Web3(provider);
 }
+const isConnected = async () => {
+  if (window.ethereum) {
+    await window.ethereum.send('eth_requestAccounts');
+    web3 = new Web3(window.ethereum);
+    return true;
+  }
+  return false;
+}
 
-export default web3;
+export {isConnected, web3};

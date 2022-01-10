@@ -1,4 +1,4 @@
-import web3 from './web3';
+import {web3} from './web3';
 import  compiledCampaign from './build/Campaign.json';
 
 const campaignAbi = compiledCampaign.abi;

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Router } from '../../routes';
 import Layout from '../../components/layout';
 import { Form, Button, Input, Message } from 'semantic-ui-react';
-import web3 from '../../ethereum/web3'
+import {web3, isConnected} from '../../ethereum/web3'
 import factory from '../../ethereum/factory'
 
 class CampaignNew extends Component {
@@ -17,6 +17,7 @@ class CampaignNew extends Component {
     event.preventDefault();
     this.setState({loading: true, errorMessage: ''});
     try {
+      await isConnected();
       const accounts = await web3.eth.getAccounts();
       await factory.methods.createCampaign(this.state.minimumContribution).send({from: accounts[0]});
       Router.pushRoute('/');    //redirect user to home page

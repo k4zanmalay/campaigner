@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Form, Table, Button, Message } from 'semantic-ui-react';
 import campaigns from '../ethereum/campaign';
-import web3 from '../ethereum/web3';
+import {web3, isConnected} from '../ethereum/web3';
 import { Router } from '../routes';
 
 class RequestRow extends Component {
@@ -16,6 +16,7 @@ class RequestRow extends Component {
 //    this.setState({loading: true, errorMessage: ''});
     const campaign = campaigns(this.props.address);
     try {
+      await isConnected();
       const accounts = await web3.eth.getAccounts();
       await campaign.methods.approveRequest(this.props.index).send({from: accounts[0]});
       Router.replaceRoute(`/campaigns/${this.props.address}/requests`);
